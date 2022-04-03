@@ -1,0 +1,24 @@
+﻿﻿.outer {
+    position: relative;
+    height: 600px;
+}
+
+.inner {
+    position: absolute;
+    top: 45%;
+    text-align: center;
+    left: 45%;
+    font-family: Oswald;
+}
+
+.hello-text {
+    text-align: center; 
+    margin-top: 250px; 
+    font-size: 40px; 
+    font-family: Oswald; 
+    text-transform: uppercase;
+}
+
+.rounded {
+    border-radius: 10px;
+}
