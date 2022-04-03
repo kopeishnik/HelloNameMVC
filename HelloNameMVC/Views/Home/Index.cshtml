@@ -1,13 +1,16 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    Layout = null;
 }
 
-<div>
+<link rel="stylesheet" href="css/site.css">
+
+<div class="outer">
     <form asp-action="Index" class="inner" method="post">
         <label>Enter Name:</label>
-        <br/>
-        <input class="rounded" type="text" name="UserName"/>
-        <br/>
-        <input class="rounded" type="submit" value="send"/>
+        <br>
+        <input class="rounded" type="text" name="UserName">
+        <br>
+        <input class="rounded" type="submit" value="send">
     </form>
 </div>
