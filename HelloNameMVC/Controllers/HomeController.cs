@@ -9,12 +9,13 @@ using HelloNameMVC.Models;
 
 namespace HelloNameMVC.Controllers
 {
-    public class HomeController : Controller
+    [Controller]
+    public class HomeControllerOlexandr : Controller
     {
         [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View("Index");
         }
         [HttpPost]
         public IActionResult Index(NameViewModel name)
@@ -23,7 +24,7 @@ namespace HelloNameMVC.Controllers
         }
         public IActionResult Privacy()
         {
-            return View();
+            return View("Privacy");
         }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
