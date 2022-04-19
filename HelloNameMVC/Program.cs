@@ -9,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
 var app = builder.Build();
+System.Web.Mvc.ControllerBuilder.Current.SetControllerFactory(new IControllerFactorySample.ControllerFactories.CustomControllerFactory());
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

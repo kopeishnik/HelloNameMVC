@@ -1,20 +1,34 @@
-﻿using System;
-using System.Configuration;
-using System.Web.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Controllers;
+//using System.Web.Mvc;
 using System.Web.Routing;
-using HelloNameMVC.Controllers;
 
 namespace IControllerFactorySample.ControllerFactories
 {
-    public class CustomControllerFactory : DefaultControllerFactory
+    public class CustomControllerFactory : IControllerFactory
     {
-        public override IController CreateController(RequestContext requestContext, string controllerName)
+        public IController CreateController(RequestContext requestContext, string controllerName)
         {
             if (string.IsNullOrEmpty(controllerName)) throw new ArgumentNullException("controllerName");
 
-            Type controllerType = controllerName == "Home" ? Type.GetType("HelloNameMVC.Controllers.HomeControllerOlexandr") : Type.GetType($"HelloNameMVC.Controllers.{controllerName}Controller");
+            Type controllerType = Type.GetType($"HelloNameMVC.Controllers.{controllerName}ControllerOlexandr");
 
-            IController? controller;
+            return Activator.CreateInstance(controllerType) as IController;
+        }
+
+        object IControllerFactory.CreateController(ControllerContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        void IControllerFactory.ReleaseController(ControllerContext context, object controller)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+/*IController ? controller;
 
             if (controllerType == null)
             {
@@ -32,7 +46,4 @@ namespace IControllerFactorySample.ControllerFactories
             else
             {
                 return controller;
-            }
-        }
-    }
-}
+            }*/
